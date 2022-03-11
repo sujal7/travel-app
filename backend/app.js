@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const userRoute = require('./routes/user');
 const placesRoute = require('./routes/places');
+const reviewsRoute = require('./routes/reviews');
 
 const port = process.env.PORT || 5000;
 require('dotenv').config();
@@ -32,6 +33,7 @@ app.use(bodyParser.json());
 // Use the default path for the user and places routes.
 app.use('/', userRoute);
 app.use('/', placesRoute);
+app.use('/', reviewsRoute);
 
 /**
  * Connects to Mongoose cloud database and starts the server.
