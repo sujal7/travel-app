@@ -1,38 +1,22 @@
 // Data Modelling of Travel App
 
 // User Collection
-// The user collection references the places collection.
+// The User collection is referenced by the embedded document in Places collection i.e. reviews.
 [
   {
     _id: ObjectID('userid1'),
     email: 'user1@gmail.com',
     password: 'password',
-    places: [
-      {
-        placeId: ObjectId('placeid1'),
-      },
-      {
-        placeId: ObjectId('placeid2'),
-      },
-    ],
   },
   {
     _id: ObjectID('userid2'),
     email: 'user2@gmail.com',
     password: 'password',
-    places: [
-      {
-        placeId: ObjectId('placeid1'),
-      },
-      {
-        placeId: ObjectId('placeid2'),
-      },
-    ],
   },
 ];
 
 // Places
-// The places collection has embedded document to represent the reviews.
+// The Places collection has embedded document to represent the reviews, and the reviews reference the User collection.
 [
   {
     _id: ObjectID('placeid'),
