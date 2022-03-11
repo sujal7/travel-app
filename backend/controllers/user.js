@@ -17,6 +17,7 @@ exports.signUp = (req, res) => {
   // Checks if the request body is validated from the middleware.
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    // Unprocessable entity.
     return res.status(422).json({
       message: 'Validation Failed, entered data is incorrect.',
       errors: errors.array(),
