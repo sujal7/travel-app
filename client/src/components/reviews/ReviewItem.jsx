@@ -16,6 +16,10 @@ export default function ReviewItem(props) {
       <div>
         <h2>Ratings</h2>
         <div>{props.ratings}</div>
+        <h2>Comment</h2>
+        <p>{props.comment}</p>
+        <h2>Cost</h2>
+        <div>NRs. {props.cost}</div>
         <h2>Heritage</h2>
         {props.heritages.map((heritage, index) => (
           <div key={index}>{heritage}</div>
@@ -25,6 +29,9 @@ export default function ReviewItem(props) {
         {props.placesToVisit.map((placeToVisit, index) => (
           <div key={index}>{placeToVisit}</div>
         ))}
+
+        <h2>Safety</h2>
+        <div>{props.safety}</div>
       </div>
     </li>
   );

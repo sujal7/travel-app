@@ -40,6 +40,9 @@ exports.addReviews = (req, res) => {
           ratings: req.body.ratings,
           heritages: req.body.heritages,
           placesToVisit: req.body.placesToVisit,
+          comment: req.body.comment,
+          cost: req.body.cost,
+          safety: req.body.safety,
         },
       },
     }

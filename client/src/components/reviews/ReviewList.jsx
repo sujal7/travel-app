@@ -22,6 +22,9 @@ export default function ReviewList(props) {
             heritages={review.heritages}
             placesToVisit={review.placesToVisit}
             reviewData={place.reviewData}
+            comment={review.comment}
+            cost={review.cost}
+            safety={review.safety}
           />
         ))
       )}
