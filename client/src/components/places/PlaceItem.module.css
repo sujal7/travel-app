@@ -13,10 +13,8 @@
 }
 
 .content img {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 20px;
-  border-radius: 50%;
+  width: 600px;
+  height: 400px;
 }
 
 .actions {

@@ -17,6 +17,7 @@ export default function PlaceItem(props) {
     <li className={classes.item}>
       <Card>
         <div className={classes.content}>
+          <img src={props.imageUrl} alt="" />
           <h3>{props.name}</h3>
           <p>{props.reviewsRating}</p>
         </div>

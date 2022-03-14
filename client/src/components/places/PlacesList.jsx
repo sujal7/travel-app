@@ -19,7 +19,8 @@ export default function PlaceList(props) {
           key={place._id}
           id={place._id}
           name={place.name}
-          reviewsRating={place.reviews[0].ratings}
+          // reviewsRating={place.reviews[0].ratings}
+          imageUrl={place.imageUrl}
         />
       ))}
     </ul>
