@@ -1,0 +1,9 @@
+.card {
+  display: inline-block;
+  background-color: #fcf3f6;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  margin-left: 35%;
+  margin-top: 20px;
+}
