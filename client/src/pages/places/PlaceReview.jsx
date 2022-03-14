@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import PlaceList from '../../components/places/PlacesList';
+import ReviewList from '../../components/reviews/ReviewList';
 
 /**
  *
@@ -9,6 +11,7 @@ import PlaceList from '../../components/places/PlacesList';
 export default function AllPlaces() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedPlaces, setLoadedPlaces] = useState([]);
+  const { id } = useParams();
 
   /**
    * Fetches the places from the server.
@@ -17,7 +20,7 @@ export default function AllPlaces() {
     setIsLoading(true);
 
     // Sends GET request of places to the server.
-    fetch('http://localhost:5000/places', {
+    fetch(`http://localhost:5000/places/${id}`, {
       headers: {
         // Sets the token in the header.
         Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -30,13 +33,13 @@ export default function AllPlaces() {
       // Sets the places in the state.
       .then((data) => {
         const places = data;
-        console.log(places);
+        // console.log(places);
         setIsLoading(false);
         setLoadedPlaces(places);
       });
   }, []);
 
-  // Returns the loading page if the places are not loaded yet.
+  // Returns the loading page if the place is not loaded yet.
   if (isLoading) {
     return (
       <section>
@@ -45,15 +48,15 @@ export default function AllPlaces() {
     );
   }
 
-  // Returns the list of places.
+  // Returns the particular place.
   return (
     <section>
-      {/* <Favorites /> */}
       <div>
         <h1 className="center primary-color">
           All Places ({loadedPlaces.length})
         </h1>
-        <PlaceList places={loadedPlaces} type="all" />
+        <PlaceList places={loadedPlaces} />
+        <ReviewList places={loadedPlaces} />
       </div>
     </section>
   );

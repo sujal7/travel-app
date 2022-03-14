@@ -21,6 +21,7 @@ export default function PlaceList(props) {
           name={place.name}
           // reviewsRating={place.reviews[0].ratings}
           imageUrl={place.imageUrl}
+          type={props.type}
         />
       ))}
     </ul>

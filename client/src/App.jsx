@@ -9,6 +9,7 @@ import SignUp from './pages/user/SignUp';
 import SignOut from './pages/user/SignOut';
 import Layout from './components/layout/Layout';
 import AllPlaces from './pages/places/AllPlaces';
+import PlaceReview from './pages/places/PlaceReview';
 
 function App() {
   const isAuth = useSelector((state) => state.isAuth);
@@ -22,7 +23,7 @@ function App() {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/places" element={<AllPlaces />} />
-          {/* <Route path="/places/:id" element={<PlaceReview />} /> */}
+          <Route path="/places/:id" element={<PlaceReview />} />
           {isAuth ? (
             <>
               <Route path="/places" element={<AllPlaces />} />
