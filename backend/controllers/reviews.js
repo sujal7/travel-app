@@ -51,3 +51,16 @@ exports.addReviews = (req, res) => {
       console.log(err);
     });
 };
+
+exports.displayReviews = (req, res) => {
+  let placeId = req.params.id;
+  placeId = mongoose.Types.ObjectId(placeId);
+
+  Places.findOne({ _id: placeId })
+    .then((places) => {
+      return res.status(200).json(places);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

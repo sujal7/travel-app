@@ -22,6 +22,7 @@ function App() {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/places" element={<AllPlaces />} />
+          {/* <Route path="/places/:id" element={<PlaceReview />} /> */}
           {isAuth ? (
             <>
               <Route path="/places" element={<AllPlaces />} />

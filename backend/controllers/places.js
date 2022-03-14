@@ -44,7 +44,7 @@ exports.addPlace = (req, res) => {
  * @param {Object} res - The response sent to the user.
  * @returns A response with status code and JSON object of places.
  */
-exports.displayContact = (req, res) => {
+exports.displayPlaces = (req, res) => {
   Places.aggregate([
     {
       $lookup: {

@@ -7,8 +7,13 @@ const isAuth = require('../middleware/isAuth');
 // const validatePlaces = require('../middleware/places');
 
 /**
- * Handles POST request in /signup endpoint.
+ * Handles POST request in /reviews endpoint.
  */
 router.post('/reviews', isAuth, validateReviews, reviewsController.addReviews);
+
+/**
+ * Handles GET request in /places/:id endpoint.
+ */
+router.get('/places/:id', isAuth, reviewsController.displayReviews);
 
 module.exports = router;

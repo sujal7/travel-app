@@ -13,6 +13,6 @@ router.post('/places', isAuth, validatePlaces, placesController.addPlace);
 /**
  * Handles GET request in /places endpoint.
  */
-router.get('/places', isAuth, placesController.displayContact);
+router.get('/places', isAuth, placesController.displayPlaces);
 
 module.exports = router;
