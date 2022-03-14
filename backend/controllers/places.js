@@ -42,18 +42,9 @@ exports.addPlace = (req, res) => {
  * Display places from the database.
  * @param {Object} req - The request sent by the user.
  * @param {Object} res - The response sent to the user.
- * @returns A response with status code and JSON object of contacts.
+ * @returns A response with status code and JSON object of places.
  */
 exports.displayContact = (req, res) => {
-  // Finds all contacts from the database.
-  // Places.find()
-  //   .then((places) => {
-  //     return res.status(200).json(places);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-
   Places.aggregate([
     {
       $lookup: {

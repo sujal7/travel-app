@@ -36,7 +36,7 @@ const reviewsSchema = new Schema({
 });
 
 /**
- * Schema for contacts.
+ * Schema for places.
  */
 const placesSchema = new Schema({
   name: {

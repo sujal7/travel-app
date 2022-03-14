@@ -40,9 +40,9 @@ export default function SignIn() {
       .then(() => {
         dispatch({ type: 'LOGIN' });
       })
-      // Navigate to the contacts page.
+      // Navigate to the places page.
       .then(() => {
-        navigate('/contacts', { replace: true });
+        navigate('/places', { replace: true });
       })
       .catch((error) => {
         console.log(error);
