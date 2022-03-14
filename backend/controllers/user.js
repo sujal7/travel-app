@@ -95,7 +95,7 @@ exports.signIn = (req, res, next) => {
 
         // The token expires in 20 minutes.
         {
-          expiresIn: '1200s',
+          expiresIn: '20d',
         }
       );
       res.status(200).json({ token: token, userID: loadedUser._id.toString() });

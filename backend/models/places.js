@@ -5,6 +5,10 @@ const Schema = mongoose.Schema;
  * Schema for different type of phone numbers i.e. mobile, work and home.
  */
 const reviewsSchema = new Schema({
+  reviewId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
   ratings: {
     type: Number,
     required: true,

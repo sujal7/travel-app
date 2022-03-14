@@ -1,4 +1,5 @@
 const { validationResult } = require('express-validator');
+const { default: mongoose } = require('mongoose');
 
 const Places = require('../models/places');
 
@@ -12,26 +13,30 @@ require('dotenv').config();
  * @returns A response with status code and message along with userId.
  */
 exports.addReviews = (req, res) => {
-  // // Checks if the request body is validated from the middleware.
-  // const errors = validationResult(req);
-  // if (!errors.isEmpty()) {
-  //   // Unprocessable entity.
-  //   return res.status(422).json({
-  //     message: 'Validation Failed, entered data is incorrect.',
-  //     errors: errors.array(),
-  //   });
-  // }
+  // Checks if the request body is validated from the middleware.
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    // Unprocessable entity.
+    return res.status(422).json({
+      message: 'Validation Failed, entered data is incorrect.',
+      errors: errors.array(),
+    });
+  }
 
   // TODO: Add userId to the reviews payload.
 
-  console.log(req.body.heritages);
-  console.log(req.body.placesToVisit);
+  // console.log(req.body.heritages);
+  // console.log(req.body.placesToVisit);
+
+  let reviewId = req.body.userId;
+  reviewId = mongoose.Types.ObjectId(reviewId);
 
   Places.updateOne(
     { name: req.body.name },
     {
       $push: {
         reviews: {
+          reviewId: reviewId,
           ratings: req.body.ratings,
           heritages: req.body.heritages,
           placesToVisit: req.body.placesToVisit,
