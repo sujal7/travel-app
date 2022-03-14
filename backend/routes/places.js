@@ -10,4 +10,9 @@ const isAuth = require('../middleware/isAuth');
  */
 router.post('/places', isAuth, validatePlaces, placesController.addPlace);
 
+/**
+ * Handles GET request in /contacts endpoint.
+ */
+router.get('/places', isAuth, placesController.displayContact);
+
 module.exports = router;

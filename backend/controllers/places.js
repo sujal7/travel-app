@@ -6,10 +6,10 @@ require('dotenv').config();
 
 /**
  *
- * Stores credentials of a new user in the database.
+ * Add a new place into the database.
  * @param {Object} req - The request sent by the user.
  * @param {Object} res - The response sent to the user.
- * @returns A response with status code and message along with userId.
+ * @returns A response with status code and message.
  */
 exports.addPlace = (req, res) => {
   // Checks if the request body is validated from the middleware.
@@ -31,6 +31,41 @@ exports.addPlace = (req, res) => {
     .save()
     .then(() => {
       return res.status(200).send('Place has been succsessfully created.');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+/**
+ *
+ * Display places from the database.
+ * @param {Object} req - The request sent by the user.
+ * @param {Object} res - The response sent to the user.
+ * @returns A response with status code and JSON object of contacts.
+ */
+exports.displayContact = (req, res) => {
+  // Finds all contacts from the database.
+  // Places.find()
+  //   .then((places) => {
+  //     return res.status(200).json(places);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
+  Places.aggregate([
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'reviews.reviewId',
+        foreignField: '_id',
+        as: 'reviewData',
+      },
+    },
+  ])
+    .then((places) => {
+      return res.status(200).json(places);
     })
     .catch((err) => {
       console.log(err);
