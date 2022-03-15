@@ -9,7 +9,12 @@ const isAuth = require('../middleware/isAuth');
 /**
  * Handles POST request in /reviews endpoint.
  */
-router.post('/reviews', isAuth, validateReviews, reviewsController.addReviews);
+router.post(
+  '/reviews/:id',
+  isAuth,
+  validateReviews,
+  reviewsController.addReviews
+);
 
 /**
  * Handles GET request in /places/:id endpoint.

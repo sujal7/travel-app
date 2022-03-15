@@ -8,13 +8,12 @@ import ReviewItem from './ReviewItem';
  * @returns The list of reviews.
  */
 export default function ReviewList(props) {
-  // Sorts the places based on the place name.
-  // sortPlaces(props.places);
-
+  console.log(props.places);
   return (
     <ul>
+      <h1>Reviews</h1>
       {props.places.map((place) =>
-        place.reviews.map((review) => (
+        place.reviews.map((review, index) => (
           <ReviewItem
             key={review._id}
             id={review._id}
@@ -25,6 +24,8 @@ export default function ReviewList(props) {
             comment={review.comment}
             cost={review.cost}
             safety={review.safety}
+            username={place.reviewData[index].username}
+            email={place.reviewData[index].email}
           />
         ))
       )}

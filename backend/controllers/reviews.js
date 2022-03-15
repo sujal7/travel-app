@@ -1,7 +1,9 @@
 const { validationResult } = require('express-validator');
 const { default: mongoose } = require('mongoose');
+const jwt_decode = require('jwt-decode');
 
 const Places = require('../models/places');
+const { decode } = require('jsonwebtoken');
 
 require('dotenv').config();
 
@@ -23,16 +25,25 @@ exports.addReviews = (req, res) => {
     });
   }
 
+  const authHeader = req.get('Authorization');
+
+  // Gets the token from authorization header which is in the form of Bearer <token>.
+  const token = authHeader.split(' ')[1];
+
+  const decoded = jwt_decode(token);
+
+  let placeId = req.params.id;
+  placeId = mongoose.Types.ObjectId(placeId);
   // TODO: Add userId to the reviews payload.
 
   // console.log(req.body.heritages);
   // console.log(req.body.placesToVisit);
 
-  let reviewId = req.body.userId;
+  let reviewId = decoded.userId;
   reviewId = mongoose.Types.ObjectId(reviewId);
 
   Places.updateOne(
-    { name: req.body.name },
+    { _id: placeId },
     {
       $push: {
         reviews: {
@@ -59,11 +70,29 @@ exports.displayReviews = (req, res) => {
   let placeId = req.params.id;
   placeId = mongoose.Types.ObjectId(placeId);
 
-  Places.find({ _id: placeId })
+  Places.aggregate([
+    { $match: { _id: placeId } },
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'reviews.reviewId',
+        foreignField: '_id',
+        as: 'reviewData',
+      },
+    },
+  ])
     .then((places) => {
       return res.status(200).json(places);
     })
     .catch((err) => {
       console.log(err);
     });
+
+  // Places.find({ _id: placeId })
+  //   .then((places) => {
+  //     return res.status(200).json(places);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
 };

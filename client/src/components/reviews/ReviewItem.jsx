@@ -9,11 +9,12 @@ import { useNavigate } from 'react-router-dom';
  * @returns {JSX.Element} - Each place item component.
  */
 export default function ReviewItem(props) {
-  const navigate = useNavigate();
-
   return (
     <li>
       <div>
+        <h2>
+          Created by: {props.username} ({props.email})
+        </h2>
         <h2>Ratings</h2>
         <div>{props.ratings}</div>
         <h2>Comment</h2>
