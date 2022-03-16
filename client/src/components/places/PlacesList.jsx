@@ -10,6 +10,13 @@ import classes from './PlaceList.module.css';
 export default function PlaceList(props) {
   // Sorts the places based on the place name.
   // sortPlaces(props.places);
+  function averageRatings(ratings) {
+    let sum = 0;
+    for (let i = 0; i < ratings.length; i++) {
+      sum += ratings[i]['ratings'];
+    }
+    return (sum / ratings.length).toFixed(2);
+  }
 
   return (
     <ul className={classes.list}>
@@ -22,6 +29,8 @@ export default function PlaceList(props) {
           // reviewsRating={place.reviews[0].ratings}
           imageUrl={place.imageUrl}
           type={props.type}
+          reviewsLength={place.reviews.length}
+          averageRatings={averageRatings(place.reviews)}
         />
       ))}
     </ul>

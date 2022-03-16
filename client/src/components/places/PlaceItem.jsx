@@ -10,6 +10,7 @@ import classes from './PlaceItem.module.css';
  */
 export default function PlaceItem(props) {
   const navigate = useNavigate();
+
   function clickHandler() {
     navigate(`/places/${props.id}`, {
       replace: true,
@@ -27,8 +28,10 @@ export default function PlaceItem(props) {
       <Card>
         <div className={classes.content}>
           <img src={props.imageUrl} alt="" />
-          <h3>{props.name}</h3>
-          <p>{props.reviewsRating}</p>
+          <h3>
+            {props.name} ({props.reviewsLength} reviews)
+          </h3>
+          <p>Average Ratings: {props.averageRatings}</p>
           {props.type === 'all' && (
             <>
               <div className={classes.actions}>

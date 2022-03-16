@@ -13,7 +13,7 @@ export default function ReviewItem(props) {
   console.log(props);
   return (
     <li>
-      <div>
+      <div className={classes.reviews}>
         <h2>
           Created by: {props.username} ({props.email})
         </h2>
