@@ -26,9 +26,6 @@ export default function MainNavigation() {
                 <Link to="/places">Places</Link>
               </li>
               <li>
-                <Link to="/add-places">Add Places</Link>
-              </li>
-              <li>
                 <Link to="/signout">Sign Out</Link>
               </li>
             </ul>

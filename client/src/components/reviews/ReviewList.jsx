@@ -9,6 +9,7 @@ import ReviewItem from './ReviewItem';
  */
 export default function ReviewList(props) {
   console.log(props.places);
+
   return (
     <ul>
       <h1>Reviews</h1>
@@ -24,6 +25,7 @@ export default function ReviewList(props) {
             comment={review.comment}
             cost={review.cost}
             safety={review.safety}
+            images={review.images}
             username={place.reviewData[index].username}
             email={place.reviewData[index].email}
           />

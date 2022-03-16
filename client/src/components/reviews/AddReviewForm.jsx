@@ -1,8 +1,9 @@
 import { useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 import Card from '../ui/Card';
 import classes from './AddReviewForm.module.css';
+import axios from 'axios';
 
 /**
  *
@@ -10,8 +11,6 @@ import classes from './AddReviewForm.module.css';
  * @returns {JSX.Element} - The add contact form component.
  */
 export default function AddContactForm(props) {
-  // const nameInputRef = useRef();
-
   const ratingsInputRef = useRef();
   const placesToVisitInputRef = useRef();
   const heritagesInputRef = useRef();
@@ -26,6 +25,8 @@ export default function AddContactForm(props) {
   function submitHandler(event) {
     event.preventDefault();
 
+    const file = event.target[1].files[0];
+    console.log(file);
     const enteredRatings = ratingsInputRef.current.value;
     let enteredPlacesToVisit = placesToVisitInputRef.current.value.split(', ');
     enteredPlacesToVisit = enteredPlacesToVisit.filter(
@@ -54,7 +55,7 @@ export default function AddContactForm(props) {
 
     console.log(formData);
 
-    props.onAddReview(formData);
+    props.onAddReview(formData, file);
 
     // /* Calls the onEditContacts prop function with the formData if requested from edit
     //    else it calls the onAddContacts prop function */
@@ -73,6 +74,19 @@ export default function AddContactForm(props) {
             Ratings <span>*</span>
           </label>
           <input type="number" required id="ratings" ref={ratingsInputRef} />
+        </div>
+
+        <div className={classes.control}>
+          <label htmlFor="images">
+            Images <span>*</span>
+          </label>
+          <input
+            type="file"
+            required
+            id="images"
+            multiple
+            accept="image/png, image/jpeg"
+          />
         </div>
 
         <div className={classes.control}>

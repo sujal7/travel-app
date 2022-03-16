@@ -54,6 +54,7 @@ exports.addReviews = (req, res) => {
           comment: req.body.comment,
           cost: req.body.cost,
           safety: req.body.safety,
+          images: req.body.images,
         },
       },
     }

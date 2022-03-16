@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import classes from './ReviewItem.module.css';
 
 // import Card from '../ui/Card';
 // import classes from './PlaceItem.module.css';
@@ -9,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
  * @returns {JSX.Element} - Each place item component.
  */
 export default function ReviewItem(props) {
+  console.log(props);
   return (
     <li>
       <div>
@@ -17,6 +19,7 @@ export default function ReviewItem(props) {
         </h2>
         <h2>Ratings</h2>
         <div>{props.ratings}</div>
+        <img src={props.images} alt="" />
         <h2>Comment</h2>
         <p>{props.comment}</p>
         <h2>Cost</h2>
