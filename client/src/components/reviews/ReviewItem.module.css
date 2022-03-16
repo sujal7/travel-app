@@ -2,3 +2,86 @@
   max-width: 400px;
   max-height: 300px;
 }
+
+li {
+  list-style: none;
+}
+
+.reviews {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  margin: 50px;
+}
+
+.reviews div:not(.images) {
+  border: 1px solid black;
+  background: #fff;
+}
+
+.images {
+  grid-row: 1/6;
+  grid-column: 1/2;
+}
+
+.comment {
+  grid-column: 2/5;
+  grid-row: 2/3;
+  justify-self: left;
+  width: 100%;
+  text-align: left;
+  padding: 0 10px;
+  /* background: #ddd; */
+}
+
+.user {
+  font-weight: bold;
+  justify-self: left;
+  align-self: center;
+  grid-column: 2/5;
+  grid-row: 1/2;
+  width: 100%;
+  /* background: #eee; */
+  text-align: left;
+  padding: 0 10px;
+}
+
+.cost {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  padding: 10px 0;
+}
+
+.ratings {
+  grid-column: 3/4;
+  grid-row: 3/4;
+  padding: 10px 0;
+}
+
+.heritages {
+  grid-column: 2/6;
+  grid-row: 4/5;
+  text-align: left;
+  padding: 10px;
+}
+
+.heritages li {
+  display: inline;
+}
+
+.placesToVisit {
+  grid-column: 2/6;
+  grid-row: 5/6;
+  text-align: left;
+  padding: 10px;
+}
+
+.placesToVisit li {
+  display: inline;
+}
+
+.safety {
+  grid-column: 4/5;
+  grid-row: 3/4;
+  padding: 10px 0;
+}

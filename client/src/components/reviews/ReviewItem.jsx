@@ -13,28 +13,40 @@ export default function ReviewItem(props) {
   return (
     <li>
       <div className={classes.reviews}>
-        <h2>
-          Created by: {props.username} ({props.email})
-        </h2>
-        <h2>Ratings</h2>
-        <div>{props.ratings}</div>
-        <img src={props.images} alt="" />
-        <h2>Comment</h2>
-        <p>{props.comment}</p>
-        <h2>Cost</h2>
-        <div>NRs. {props.cost}</div>
-        <h2>Heritage</h2>
-        {props.heritages.map((heritage, index) => (
-          <div key={index}>{heritage}</div>
-        ))}
+        <div className={classes.user}>
+          By: {props.username} (<a href="#">{props.email}</a>)
+        </div>
+        <div className={classes.ratings}>
+          <b>Ratings:</b> {props.ratings}
+        </div>
+        <div className={classes.images}>
+          <img src={props.images} alt="" />
+        </div>
+        <div className={classes.comment}>
+          {/* Comment */}
+          <p>{props.comment}</p>
+        </div>
+        <div className={classes.cost}>
+          <b>Cost:</b> Nrs.{' '}
+          {props.cost.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+        </div>
+        <div className={classes.heritages}>
+          <b>Heritages:</b>
+          {props.heritages.map((heritage, index) => (
+            <li key={index}> {heritage},</li>
+          ))}
+        </div>
 
-        <h2>Places To Visit</h2>
-        {props.placesToVisit.map((placeToVisit, index) => (
-          <div key={index}>{placeToVisit}</div>
-        ))}
+        <div className={classes.placesToVisit}>
+          <b>Places to Visit:</b>
+          {props.placesToVisit.map((place, index) => (
+            <li key={index}> {place},</li>
+          ))}
+        </div>
 
-        <h2>Safety</h2>
-        <div>{props.safety}</div>
+        <div className={classes.safety}>
+          <b>Safety:</b> {props.safety}
+        </div>
       </div>
     </li>
   );
