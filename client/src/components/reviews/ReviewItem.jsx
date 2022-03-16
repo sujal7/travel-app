@@ -10,7 +10,6 @@ import classes from './ReviewItem.module.css';
  * @returns {JSX.Element} - Each place item component.
  */
 export default function ReviewItem(props) {
-  console.log(props);
   return (
     <li>
       <div className={classes.reviews}>
